@@ -3,7 +3,7 @@ import { xml } from '$lib/xml';
 import type { EpisodeType } from '$lib/types';
 export const prerender = true;
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async () => {
 	const episodes: EpisodeType[] = [];
 
 	const paths = import.meta.glob('/src/episodes/**/*.md', { eager: true });
@@ -17,7 +17,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		}
 	}
 
-	const body = xml(episodes, url.origin);
+	const body = xml(episodes);
 	return new Response(body, {
 		headers: { 'Cache-Control': 'max-age=0, s-maxage=3600', 'Content-Type': 'application/xml' }
 	});

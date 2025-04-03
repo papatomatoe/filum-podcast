@@ -1,17 +1,17 @@
 import type { EpisodeType } from '$lib/types';
+import { SITE_URL as siteUrl } from '$env/static/private';
 
 const feedTitle = 'Filum - Embroidery Podcast';
 const feedAuthor = 'Masha Reprintseva';
 const feedDescription =
 	'I share stories that inspire and reveal unique experiences of creators, makers and lovers of all kinds.';
-const feedLink = (siteUrl: string) => `${siteUrl}/feed.xml`;
+const feedLink = `${siteUrl}/feed.xml`;
 const feedEmail = 'mashareprintseva@gmail.com';
 const feedUpdated = new Date();
-const feedCover = (siteUrl: string) => `${siteUrl}/cover.jpg`;
+const feedCover = `${siteUrl}/cover.jpg`;
 
 export const xml = (
-	episodes: EpisodeType[],
-	siteUrl: string
+	episodes: EpisodeType[]
 ) => `<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <title>${feedTitle}</title>
@@ -19,14 +19,14 @@ export const xml = (
     <copyright>СС BY-NC-ND 4.0</copyright>
     <language>en</language>
     <link>${siteUrl}</link>
-    <atom:link href="${feedLink(siteUrl)}" rel="self" type="application/rss+xml"/>
+    <atom:link href="${feedLink}" rel="self" type="application/rss+xml"/>
     <itunes:type>episodic</itunes:type>
     <itunes:author>${feedAuthor}</itunes:author>
     <itunes:explicit>no</itunes:explicit>
     <itunes:owner>
       <itunes:email>${feedEmail}</itunes:email>
     </itunes:owner>
-    <itunes:image href="${feedCover(siteUrl)}"/>
+    <itunes:image href="${feedCover}"/>
     <itunes:category text="Arts"/>
     <lastBuildDate>${feedUpdated}</lastBuildDate>
 ${episodes
@@ -43,7 +43,7 @@ ${episodes
       <itunes:author>${episode.author}</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:summary><![CDATA[ ${episode.description} ]]></itunes:summary>
-      <itunes:image href="${episode.cover ?? feedCover(siteUrl)}"/>
+      <itunes:image href="${episode.cover ?? feedCover}"/>
     </item>`
 	)
 	.join('\n')}
