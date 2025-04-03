@@ -1,0 +1,47 @@
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/volkhov/700.css';
+
+:root {
+	--font--main: Roboto, sans-serif;
+	--font--decorate: Volkhov, serif;
+
+	--text--p: 300 14px/1.5 var(--font--main);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	min-width: 376px;
+	font: var(--text--p);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 1px;
+	height: auto;
+	overflow: hidden;
+	white-space: nowrap;
+}
