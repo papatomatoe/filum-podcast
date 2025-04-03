@@ -1,6 +1,7 @@
 import type { EpisodeType } from '$lib/types';
 import { SITE_URL as siteUrl } from '$env/static/private';
-console.log('-------------->', siteUrl);
+import { base } from '$app/paths';
+console.log('-------------->', base);
 const feedTitle = 'Filum - Embroidery Podcast';
 const feedAuthor = 'Masha Reprintseva';
 const feedDescription =
