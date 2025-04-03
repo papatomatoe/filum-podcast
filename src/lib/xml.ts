@@ -1,33 +1,32 @@
 import type { EpisodeType } from '$lib/types';
-import { BASE_PATH } from '$env/static/private';
 
-const website = BASE_PATH;
 const feedTitle = 'Filum - Embroidery Podcast';
 const feedAuthor = 'Masha Reprintseva';
 const feedDescription =
 	'I share stories that inspire and reveal unique experiences of creators, makers and lovers of all kinds.';
-const feedLink = `${BASE_PATH}/feed`;
+const feedLink = (siteUrl: string) => `${siteUrl}/feed.xml`;
 const feedEmail = 'mashareprintseva@gmail.com';
 const feedUpdated = new Date();
-const feedCover = `${BASE_PATH}/cover.jpg`;
+const feedCover = (siteUrl: string) => `${siteUrl}/cover.jpg`;
 
 export const xml = (
-	episodes: EpisodeType[]
+	episodes: EpisodeType[],
+	siteUrl: string
 ) => `<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <title>${feedTitle}</title>
     <description>${feedDescription}</description>
     <copyright>СС BY-NC-ND 4.0</copyright>
     <language>en</language>
-    <link>${website}</link>
-    <atom:link href="${feedLink}" rel="self" type="application/rss+xml"/>
+    <link>${siteUrl}</link>
+    <atom:link href="${feedLink(siteUrl)}" rel="self" type="application/rss+xml"/>
     <itunes:type>episodic</itunes:type>
     <itunes:author>${feedAuthor}</itunes:author>
     <itunes:explicit>no</itunes:explicit>
     <itunes:owner>
       <itunes:email>${feedEmail}</itunes:email>
     </itunes:owner>
-    <itunes:image href="${feedCover}"/>
+    <itunes:image href="${feedCover(siteUrl)}"/>
     <itunes:category text="Arts"/>
     <lastBuildDate>${feedUpdated}</lastBuildDate>
 ${episodes
@@ -38,13 +37,13 @@ ${episodes
       <pubDate>${episode.pubDate}</pubDate>
       <description><![CDATA[ ${episode.description} ]]></description>
       <guid isPermaLink="true">${episode.audio}</guid>
-      <enclosure type="audio/mpeg" url="${BASE_PATH}/${episode.audio}" length="${episode.size}"/>
+      <enclosure type="audio/mpeg" url="${siteUrl}/${episode.audio}" length="${episode.size}"/>
       <itunes:episode>${episode.number}</itunes:episode>
       <itunes:duration>${episode.duration}</itunes:duration>
       <itunes:author>${episode.author}</itunes:author>
       <itunes:explicit>no</itunes:explicit>
       <itunes:summary><![CDATA[ ${episode.description} ]]></itunes:summary>
-      <itunes:image href="${episode.cover ?? feedCover}"/>
+      <itunes:image href="${episode.cover ?? feedCover(siteUrl)}"/>
     </item>`
 	)
 	.join('\n')}
