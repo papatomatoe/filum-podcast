@@ -7,7 +7,7 @@ export const prerender = true;
 export const GET: RequestHandler = async () => {
 	const episodes: EpisodeType[] = [];
 
-	const paths = import.meta.glob('/src/episodes/**/*.md', { eager: true });
+	const paths = import.meta.glob('/static/episodes/**/*.md', { eager: true });
 
 	for (const path in paths) {
 		const file = paths[path];
