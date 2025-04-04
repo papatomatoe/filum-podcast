@@ -1,6 +1,10 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import { xml } from '$lib/xml';
 import type { EpisodeType } from '$lib/types';
+import { SITE_URL } from '$env/static/private';
+
+console.log('-------->', SITE_URL);
+
 export const prerender = true;
 
 export const GET: RequestHandler = async () => {
