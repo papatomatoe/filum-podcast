@@ -28,7 +28,6 @@ jobs:
       - name: build
         env:
           BASE_PATH: '/${{ github.event.repository.name }}'
-          SITE_URL_TEST: '${{ site.url }}'
           SITE_URL: 'http://test.test'
         run: |
           pnpm run build
