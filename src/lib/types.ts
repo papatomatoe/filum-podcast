@@ -8,4 +8,5 @@ export type EpisodeType = {
 	number: number;
 	author: string;
 	cover: string;
+	preview: string;
 };

@@ -13,7 +13,9 @@ export const GET: RequestHandler = async () => {
 		const file = paths[path];
 
 		if (file && typeof file === 'object' && 'metadata' in file) {
-			const episode = { ...(file.metadata as EpisodeType) };
+			const metadata = file.metadata as EpisodeType;
+
+			const episode = { ...metadata, description: metadata.preview.split('\n').join('') };
 			episodes.push(episode);
 		}
 	}
