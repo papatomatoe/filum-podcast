@@ -19,7 +19,8 @@ const config = {
 		}),
 		paths: {
 			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
-		}
+		},
+		prerender: { entries: ['/', '/episodes/1'] }
 	},
 	extensions: ['.svelte', '.md']
 };

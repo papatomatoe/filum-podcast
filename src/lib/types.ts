@@ -1,6 +1,6 @@
 export type EpisodeType = {
 	title: string;
-	pubDate: string;
+	date: string;
 	description: string;
 	audio: string;
 	size: number;

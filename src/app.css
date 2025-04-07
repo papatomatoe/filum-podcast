@@ -1,11 +1,25 @@
+@import '@fontsource/roboto';
 @import '@fontsource/roboto/300.css';
-@import '@fontsource/volkhov/700.css';
+@import '@fontsource/roboto/300-italic.css';
+@import '@fontsource/volkhov';
 
 :root {
 	--font--main: Roboto, sans-serif;
 	--font--decorate: Volkhov, serif;
 
-	--text--p: 300 14px/1.5 var(--font--main);
+	--text--h1: 400 42px/1.5 var(--font--decorate);
+	--text--h2: 300 italic 24px/1.5 var(--font--main);
+	--text--h3: 400 20px/1.5 var(--font--main);
+	--text--subtitle: 300 italic 16px/1.5 var(--font--main);
+	--text--p: 300 16px/1.5 var(--font--main);
+
+	--color--primary: #480008;
+	--color--secondary: #8A6F48;
+	--color--white: #ffffff;
+	--color--black: #00000;
+	--color--text: #454545;
+
+	--border: 1px solid #d8d8d8;
 }
 
 * {
@@ -23,6 +37,8 @@ body {
 body {
 	min-width: 376px;
 	font: var(--text--p);
+	color: var(--color--text);
+	background-color: var(--color--white);
 }
 
 h1,
@@ -30,11 +46,53 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6, p {
 	margin: 0;
 	padding: 0;
 }
-.visually-hidden {
+
+h1 {
+	font: var(--text--h1);
+	color: var(--color--primary);
+}
+
+h2 {
+	font: var(--text--h2);
+	color: var(--color--secondary);
+}
+
+h3 {
+	font: var(--text--h3);
+}
+
+a {
+	color: var(--color--secondary);
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+
+a:hover, a:focus-visible {
+opacity: 0.7;
+}
+a:active {
+	opacity: 0.5;
+}
+
+img {
+	min-width: 100%;
+	height: auto;
+}
+
+.content-section {
+	border-bottom: var(--border);
+	padding-bottom: 60px;
+}
+.content-section__title {
+	padding: 34px 0;
+	text-align: center;
+}
+
+.v-h {
 	border: 0;
 	clip: rect(0 0 0 0);
 	position: absolute;

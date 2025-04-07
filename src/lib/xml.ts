@@ -33,7 +33,7 @@ ${episodes
 		(episode) => `
     <item>
       <title>${episode.title}</title>
-      <pubDate>${episode.pubDate}</pubDate>
+      <pubDate>${episode.date}</pubDate>
       <description><![CDATA[ ${episode.description} ]]></description>
       <guid isPermaLink="true">${episode.audio}</guid>
       <enclosure type="audio/mpeg" url="${siteUrl}/${episode.audio}" length="${episode.size}"/>
