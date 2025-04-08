@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Links from '$lib/components/Links.svelte';
 	import Episodes from '$lib/components/Episodes.svelte';
+	import { base } from '$app/paths';
+
 	import type { PageData } from './$types';
 
 	type Props = {
@@ -10,7 +12,7 @@
 	let { data }: Props = $props();
 </script>
 
-<img class="image" src="/main.webp" alt="Filum podcast" />
+<img class="image" src="{base}/main.webp" alt="Filum podcast" />
 
 <div class="title-container">
 	<h1 class="title">Filum Podcast</h1>

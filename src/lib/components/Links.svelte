@@ -3,6 +3,7 @@
 	import Applepodcasts from '$lib/components/icons/applepodcasts.svelte';
 	import Email from '$lib/components/icons/email.svelte';
 	import Rss from '$lib/components/icons/rss.svelte';
+	import { base } from '$app/paths';
 
 	const LINKS = [
 		{
@@ -23,7 +24,7 @@
 		{
 			title: 'RSS Feed',
 			icon: Rss,
-			url: '/feed.xml'
+			url: `${base}/feed.xml`
 		}
 	];
 </script>

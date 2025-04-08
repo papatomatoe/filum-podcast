@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { base } from '$app/paths';
+
 	type Props = {
 		items: {
 			title: string;
@@ -15,7 +17,7 @@
 		<ul class="list">
 			{#each items as episode}
 				<li class="item">
-					<a class="link" href="/episodes/{episode.number}">
+					<a class="link" href="{base}/episodes/{episode.number}">
 						<h3 class="episode">
 							Episode: {episode.number} <span class="episode__title">"{episode.title}"</span>
 						</h3>
@@ -24,7 +26,7 @@
 			{/each}
 		</ul>
 
-		<a class="all-episodes" href="/episodes">all episodes</a>
+		<a class="all-episodes" href="{base}/episodes">all episodes</a>
 	</section>
 {/if}
 
