@@ -1,6 +1,8 @@
 import type { EpisodeType } from '$lib/types';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
+export const prerender = true;
+
 export const GET: RequestHandler = async () => {
 	const data: EpisodeType[] = [];
 
@@ -13,11 +15,11 @@ export const GET: RequestHandler = async () => {
 		}
 	}
 
-	// const episodes = data
-	// 	.sort((a, b) => a.number - b.number)
-	// 	.map((el) => {
-	// 		return { title: el.title, number: el.number };
-	// 	});
+	const episodes = data
+		.sort((a, b) => a.number - b.number)
+		.map((el) => {
+			return { title: el.title, number: el.number };
+		});
 
-	return json(data);
+	return json(episodes);
 };
