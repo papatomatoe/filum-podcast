@@ -4,6 +4,7 @@
 	import Email from '$lib/components/icons/email.svelte';
 	import Rss from '$lib/components/icons/rss.svelte';
 	import { base } from '$app/paths';
+	import Patreon from '$lib/components/icons/patreon.svelte';
 
 	const LINKS = [
 		{
@@ -15,6 +16,11 @@
 			title: 'Apple Po',
 			icon: Applepodcasts,
 			url: 'https://podcasts.apple.com'
+		},
+		{
+			title: 'Patreon',
+			icon: Patreon,
+			url: 'https://www.patreon.com/mashareprintseva?utm_campaign=creatorshare_creator'
 		},
 		{
 			title: 'Email',
@@ -57,6 +63,6 @@
 	}
 
 	.item__link {
-		display: block;
+		display: grid;
 	}
 </style>
