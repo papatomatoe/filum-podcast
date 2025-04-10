@@ -1,5 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import { xml } from '$lib/xml';
+import { getXml } from '$lib/xml';
 import type { EpisodeType } from '$lib/types';
 
 export const prerender = true;
@@ -20,7 +20,7 @@ export const GET: RequestHandler = async () => {
 		}
 	}
 
-	const body = xml(episodes);
+	const body = getXml(episodes);
 	return new Response(body, {
 		headers: { 'Cache-Control': 'max-age=0, s-maxage=3600', 'Content-Type': 'application/xml' }
 	});

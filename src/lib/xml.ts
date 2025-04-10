@@ -9,7 +9,32 @@ const feedEmail = 'mashareprintseva@gmail.com';
 const feedUpdated = new Date();
 const feedCover = `${siteUrl}/cover.jpg`;
 
-export const xml = (
+import { statSync } from 'node:fs';
+import path from 'node:path';
+
+const baseDir = process.cwd();
+
+const getEpisodeXml = (episode: EpisodeType) => {
+	const filePath = path.join(baseDir, 'static', episode.audio);
+	const fileSize = statSync(filePath).size;
+
+	return `
+    <item>
+      <title>${episode.title}</title>
+      <pubDate>${episode.date}</pubDate>
+      <description><![CDATA[ ${episode.description} ]]></description>
+      <guid isPermaLink="true">${episode.audio}</guid>
+      <enclosure type="audio/mpeg" url="${siteUrl}/${episode.audio}" length="${fileSize}"/>
+      <itunes:episode>${episode.number}</itunes:episode>
+      <itunes:duration>${episode.duration}</itunes:duration>
+      <itunes:author>${episode.author}</itunes:author>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:summary><![CDATA[ ${episode.description} ]]></itunes:summary>
+      <itunes:image href="${episode.cover ?? feedCover}"/>
+    </item>`;
+};
+
+export const getXml = (
 	episodes: EpisodeType[]
 ) => `<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
@@ -28,22 +53,5 @@ export const xml = (
     <itunes:image href="${feedCover}"/>
     <itunes:category text="Arts"/>
     <lastBuildDate>${feedUpdated}</lastBuildDate>
-${episodes
-	.map(
-		(episode) => `
-    <item>
-      <title>${episode.title}</title>
-      <pubDate>${episode.date}</pubDate>
-      <description><![CDATA[ ${episode.description} ]]></description>
-      <guid isPermaLink="true">${episode.audio}</guid>
-      <enclosure type="audio/mpeg" url="${siteUrl}/${episode.audio}" length="${episode.size}"/>
-      <itunes:episode>${episode.number}</itunes:episode>
-      <itunes:duration>${episode.duration}</itunes:duration>
-      <itunes:author>${episode.author}</itunes:author>
-      <itunes:explicit>no</itunes:explicit>
-      <itunes:summary><![CDATA[ ${episode.description} ]]></itunes:summary>
-      <itunes:image href="${episode.cover ?? feedCover}"/>
-    </item>`
-	)
-	.join('\n')}
+${episodes.map(getEpisodeXml).join('\n')}
   </channel></rss>`;

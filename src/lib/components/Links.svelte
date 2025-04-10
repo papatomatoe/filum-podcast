@@ -13,7 +13,7 @@
 			url: 'https://youtube.com'
 		},
 		{
-			title: 'Apple Po',
+			title: 'Apple Podcasts',
 			icon: Applepodcasts,
 			url: 'https://podcasts.apple.com'
 		},
