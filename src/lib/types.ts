@@ -3,10 +3,8 @@ export type EpisodeType = {
 	date: string;
 	description: string;
 	audio: string;
-	size: number;
-	duration: string;
 	number: number;
 	author: string;
-	cover: string;
+	cover?: string;
 	preview: string;
 };
