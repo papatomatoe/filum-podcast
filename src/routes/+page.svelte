@@ -20,7 +20,11 @@
 </div>
 <Links />
 
-<Episodes items={data.episodes} />
+<section class="content-section">
+	<h2 class="content-section__title">Recent</h2>
+	<Episodes items={data.episodes} />
+	<a class="all-episodes" href="{base}/episodes">all episodes</a>
+</section>
 
 <section class="content-section">
 	<h2 class="content-section__title">About</h2>
@@ -73,5 +77,12 @@
 	.list ul {
 		display: grid;
 		gap: 10px;
+	}
+
+	.all-episodes {
+		display: block;
+		margin: 0 auto;
+		width: fit-content;
+		text-align: center;
 	}
 </style>

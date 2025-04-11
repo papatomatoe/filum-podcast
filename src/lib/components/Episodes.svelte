@@ -12,22 +12,17 @@
 </script>
 
 {#if items.length}
-	<section class="content-section">
-		<h2 class="content-section__title">Recent</h2>
-		<ul class="list">
-			{#each items as episode}
-				<li class="item">
-					<a class="link" href="{base}/episodes/{episode.number}">
-						<h3 class="episode">
-							Episode: {episode.number} <span class="episode__title">"{episode.title}"</span>
-						</h3>
-					</a>
-				</li>
-			{/each}
-		</ul>
-
-		<a class="all-episodes" href="{base}/episodes">all episodes</a>
-	</section>
+	<ul class="list">
+		{#each items as episode}
+			<li class="item">
+				<a class="link" href="{base}/episodes/{episode.number}">
+					<h3 class="episode">
+						Episode: {episode.number} <span class="episode__title">"{episode.title}"</span>
+					</h3>
+				</a>
+			</li>
+		{/each}
+	</ul>
 {/if}
 
 <style>
@@ -47,11 +42,5 @@
 	}
 	.episode__title {
 		color: var(--color--text);
-	}
-	.all-episodes {
-		display: block;
-		margin: 0 auto;
-		width: fit-content;
-		text-align: center;
 	}
 </style>
