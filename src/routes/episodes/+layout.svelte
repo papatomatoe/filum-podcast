@@ -1,13 +1,14 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { base } from '$app/paths';
 
 	import { page } from '$app/state';
 
 	const MENU = [
-		{ title: 'home', href: '/' },
+		{ title: 'home', href: base },
 		{
 			title: 'all episodes',
-			href: '/episodes'
+			href: `${base}/episodes`
 		}
 	];
 
