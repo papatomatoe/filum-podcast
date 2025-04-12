@@ -5,7 +5,7 @@
 	import { page } from '$app/state';
 
 	const MENU = [
-		{ title: 'home', href: base },
+		{ title: 'home', href: `${base}/` },
 		{
 			title: 'all episodes',
 			href: `${base}/episodes`
